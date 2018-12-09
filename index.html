@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="p5.js demo project">
+	<meta name="author" content="sero">
+	<meta name="theme-color" content="#111">
+	<title>Welcome to the magic city *_*</title>
+	<script src="libs/p5.js"></script>
+	<script src="libs/p5.sound.js"></script>
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/jquery-ui.min.js"></script>
+	<script src="scripts/magiccity.js"></script>
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.min.css">
+	<link type="text/css" rel="stylesheet" href="styles/style.css">
+	<style type="text/css">
+		body {
+			overflow: hidden;
+			background-color: #13181E;
+		}
+
+		canvas {
+			position: absolute;
+			bottom:      0;
+			left:     0;
+		}
+	</style>
+</head>
+
+<body>
+<main role="main" class="main-content"></main>
+<script type="text/javascript">
+
+	// please note,
+	// that IE11 now returns undefined again for window.chrome
+	// and new Opera 30 outputs true for window.chrome
+	// but needs to check if window.opr is not undefined
+	// and new IE Edge outputs to true now for window.chrome
+	// and if not iOS Chrome check
+	// so use the below updated condition
+	let isChromium = window.chrome;
+	let winNav = window.navigator;
+	let vendorName = winNav.vendor;
+	let isOpera = typeof window.opr !== "undefined";
+	let isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+	let isIOSChrome = winNav.userAgent.match("CriOS");
+	let browserErrorMessage = 'Sorry, you won\t get in today. Try Google Chrome next time.';
+
+	if (isIOSChrome)
+	{
+		alert(browserErrorMessage);
+		throw new Error(browserErrorMessage);
+	}
+	else if (
+			isChromium !== null &&
+			typeof isChromium !== "undefined" &&
+			vendorName === "Google Inc." &&
+			isOpera === false &&
+			isIEedge === false
+	)
+	{
+		// all good, using chrome :)
+	}
+	else
+	{
+		alert(browserErrorMessage);
+		throw new Error(browserErrorMessage);
+	}
+
+	// checked variables below this line
+	var city;
+
+	p5.disableFriendlyErrors = true;
+
+	var imageTexture1,
+			imageTexture2,
+			textureTrainLogo,
+			textureBerlin,
+			snowflakes = [],
+			debugFpsSum = 0,
+			debugFpsCount,
+			myfont;
+
+	function preload()
+	{
+		myfont = loadFont('assets/AvenirNextLTPro-Demi.otf');
+  		imageTexture1 = loadImage('images/texture2.png');
+  		imageTexture2 = loadImage('images/texture3.png');
+  		textureBerlin = loadImage('images/wappen.png');
+  		textureTrainLogo = loadImage('images/logo.png');
+	}
+
+	function setup()
+	{
+		createCanvas(windowWidth, windowHeight, WEBGL);
+
+  		setAttributes('premultipliedAlpha', true);
+
+		frameRate(30);
+
+		city = new magicCity();
+
+		if (windowWidth < 1200) {
+			let error = 'Come back when your screen is bigger.';
+			city.showDialog('Yours is too small!', error);
+			throw new Error(error);
+		}
+
+		if (localStorage.getItem('drawBlock') === null) {
+			city.setup();
+		}
+		else {
+			city.showDialog('You destroyed the world', 'You didn\'t listen to me, now see what you did<br><br>=(', '', function () {});
+			city.draw = function () {
+
+			};
+		}
+
+		debugFpsArray = [];
+	}
+
+	function windowResized()
+	{
+		if (city && city.setupExecuted) {
+			city.earthquake();
+		}
+	}
+
+	var draw = function ()
+	{
+		city.draw();
+
+//		city.drawDebug();
+	};
+</script>
+</body>
+</html>
