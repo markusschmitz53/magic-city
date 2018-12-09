@@ -18,6 +18,9 @@ var crewActive,
 		/**
 		 * The magic city contains our whole world.
 		 *
+		 * Font used is Source Sans Pro (https://github.com/adobe-fonts/source-sans-pro)
+		 * For font license see https://github.com/adobe-fonts/source-sans-pro/blob/release/LICENSE.txt
+		 *
 		 * https://color.adobe.com/Dark-Winter-color-theme-10359770/
 		 */
 		constructor () {
@@ -32,7 +35,7 @@ var crewActive,
 			this.maxY = (height/2);
 
 			this.moonSize = (windowHeight / 4);
-			this.moonTempo = 1;
+			this.moonTempo = 0.95;
 			this.moonTrajectoryRadius = 0.00009;
 
 			this.moonPosition = createVector(-this.maxX + 100, -200); // initialpos
@@ -448,13 +451,13 @@ return;
 
 			fill('#FFF');
 			textSize(18);
-			let roundedPosX = Math.floor(this.moonPosition.x),
-				roundedPosY = Math.floor(this.moonPosition.y);
+			let roundedPosX = Math.floor(this.moonPosition.x) + 1,
+				roundedPosY = Math.floor(this.moonPosition.y) + 1;
 			text('('+roundedPosX+'|'+roundedPosY+')' +
 				 '\n' +
-				 'x = ' + roundedPosX + ' + (' + this.moonTempo + ' · cos( ' + this.moonAngle.toFixed(4) + '))' +
+				 'x = ' + roundedPosX + ' + (' + this.moonTempo + ' · cos(' + cos(this.moonAngle).toFixed(4) + '))' +
 				 '\n' +
-				 'y = ' + roundedPosX + ' + (' + this.moonTempo + ' · cos( ' + this.moonAngle.toFixed(4) + '))'
+				 'y = ' + roundedPosY + ' + (' + this.moonTempo + ' · sin(' + sin(this.moonAngle).toFixed(4) + '))'
 					, this.moonPosition.x + (this.moonSize / 2) + 10, this.moonPosition.y - 60);
 		}
 
@@ -477,6 +480,18 @@ return;
 					  },
 					  buttons: dialogButtons
 			});
+		}
+
+		toggleDebugDraw () {
+			if (typeof this._drawMoon === 'undefined') {
+				this._drawMoon = this.drawMoon;
+				this.drawMoon = this.drawDebugMoon;
+			}
+			else {
+				this.drawMoon = this._drawMoon;
+				delete this._drawMoon;
+			}
+			this.train.toggleDebugDraw();
 		}
 
 		/**
@@ -697,6 +712,37 @@ return;
 			}
 
 			pop();
+		}
+
+		toggleDebugDraw () {
+			if (typeof this._draw === 'undefined')
+			{
+				this._draw = this.draw;
+				this.draw = this.drawDebug;
+			}
+			else
+			{
+				this.draw = this._draw;
+				delete this._draw;
+			}
+		}
+
+		drawDebug () {
+			this._draw();
+
+			fill('rgba(255, 255, 255, 0.1)');
+			rect(this.position.x, this.position.y - this.trainHeight - 10, 150, -90);
+
+			fill('#FFF');
+			textSize(18);
+			let roundedPosX = Math.floor(this.position.x),
+				roundedPosY = Math.floor(this.position.y);
+			text('(' + roundedPosX + '|' + roundedPosY + ')' +
+				 '\n' +
+				 'x = ' + this.trainAccelerationVector.x + ' + ' + roundedPosX +
+				 '\n' +
+				 'y = ' + this.trainAccelerationVector.y + ' + ' + roundedPosY,
+				 this.position.x + 10, this.position.y - this.trainHeight - 70);
 		}
 	}
 

@@ -124,13 +124,8 @@
 	}
 
 	function mousePressed() {
-		if (typeof city._drawMoon === 'undefined') {
-			city._drawMoon = city.drawMoon;
-			city.drawMoon = city.drawDebugMoon;
-		}
-		else {
-			city.drawMoon = city._drawMoon;
-			delete city._drawMoon;
+		if (city) {
+			city.toggleDebugDraw();
 		}
 	}
 
