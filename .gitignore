@@ -1,9 +1,5 @@
 .idea
 server.bat
-
-images/logo.png
-images/wappen.png
-
 fonts/*
 
 # Windows thumbnail cache files
