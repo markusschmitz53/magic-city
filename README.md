@@ -1,14 +1,12 @@
-# Magic City
-p5.js demo project
+# magic city
+is a [p5.js](https://p5js.org/) demo project
 
-* moon trajectory
-* shooting stars
-* stars
-* windows
-* modular buildings
-* webaudio tweaks
+:no_mobile_phones::microphone:
+  * *use [google chrome](https://www.google.com/chrome/), a microphone and a display thats 1200px+ wide for the best experience.*
+  * *the city will react to your microphone input, so you need to allow microphone access for the page.*
 
-https://ibb.co/bDQ1S0
+i was trying to get my head around simple animation concepts, so i created this demo project using [p5.js](https://p5js.org/). the city will react to the mircophone input in various ways. most element positions and sizes are calculated dynamically, so it depends on your display, how the city looks.
 
+![https://ibb.co/THkXPTK](https://i.ibb.co/556Ds9Y/180912-city.jpg)
 
-![https://ibb.co/bDQ1S0](https://thumb.ibb.co/bDQ1S0/magic.jpg)
+thanks to [Benjamin Engemann](https://github.com/engebeni), [Meryem Gallatz](https://meryemgallatz.com/) and [Denise Alheit](https://www.denisealheit.com/) for all the support :green_heart:!
