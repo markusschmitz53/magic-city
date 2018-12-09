@@ -1,5 +1,5 @@
 # magic city
-p5.js demo project
+is a [p5.js](https://p5js.org/) demo project
 
 :no_mobile_phones::microphone:
   * *use [google chrome](https://www.google.com/chrome/), a microphone and a display thats 1200px+ wide for the best experience.*
