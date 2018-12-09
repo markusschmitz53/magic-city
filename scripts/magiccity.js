@@ -472,11 +472,11 @@ return;
 					  modal  : true,
 					  show   : {
 						  effect  : 'fade',
-						  duration: 1000
+						  duration: 500
 					  },
 					  hide   : {
 						  effect  : 'fade',
-						  duration: 1000
+						  duration: 500
 					  },
 					  buttons: dialogButtons
 			});

@@ -104,9 +104,26 @@
 
 		if (windowWidth < 1200) {
 			let error = 'Come back when your screen is bigger.';
-			city.showDialog('Yours is too small!', error);
+			city.showDialog('Too small my friend!', error);
 			throw new Error(error);
 		}
+
+		if (!navigator || !navigator.mediaDevices || typeof navigator.mediaDevices.getUserMedia !== 'function') {
+			let error = 'Your browser seems to be incompatible.';
+			city.showDialog('I\'m not sure why but', error);
+			throw new Error(error);
+		}
+
+		navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(function (stream) {
+			let audioTracks = stream.getAudioTracks();
+			if (!audioTracks || audioTracks.length === 0) {
+				showMicrophoneError();
+				throw new Error();
+			}
+		}).catch(function (err) {
+			showMicrophoneError();
+			noLoop();
+		});
 
 		if (localStorage.getItem('drawBlock') === null) {
 			city.setup();
@@ -123,8 +140,17 @@
 		debugFpsArray = [];
 	}
 
+	function showMicrophoneError() {
+		let error = 'Please allow microphone access for this page:' +
+					'<br>click the little black camera icon next to the site url in your browser toolbar and reload this site.' +
+					'<br><br>If you don\`t, you might as well leave.';
+		city.showDialog('This page doesn\'t record anything!', error, 'I\'m lame and I want to leave', function () {
+			window.location.href = 'https://www.ecosia.org/';
+		});
+	}
+
 	function mousePressed() {
-		if (city) {
+		if (city && city.setupExecuted) {
 			city.toggleDebugDraw();
 		}
 	}
