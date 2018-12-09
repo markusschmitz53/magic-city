@@ -417,11 +417,11 @@ return;
 				innerMoonSize = (currentMoonSize - (2 * moonSizeDifference));
 
 			noStroke();
-
+/*
 			fill('rgba(242, 236, 216, 0.25)');
 			rect(this.moonPosition.x + (this.moonSize / 2), this.moonPosition.y, 200, -50);
 			text(this.moonPosition.x + (this.moonSize / 2), this.moonPosition.y, 'y x + mt²');
-
+*/
 			let moonVertices = 40;
 
 			// draw outer moon circle
