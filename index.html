@@ -85,7 +85,7 @@
 
 	function preload()
 	{
-	//	myfont = loadFont('fonts/source.otf');
+		myfont = loadFont('fonts/SourceSansPro-Regular.otf');
   		imageTexture1 = loadImage('images/texture2.png');
   		imageTexture2 = loadImage('images/texture3.png');
   		textureBerlin = loadImage('images/wappen.png');
@@ -118,9 +118,20 @@
 			};
 		}
 
-		//textFont(myfont);
+		textFont(myfont);
 
 		debugFpsArray = [];
+	}
+
+	function mousePressed() {
+		if (typeof city._drawMoon === 'undefined') {
+			city._drawMoon = city.drawMoon;
+			city.drawMoon = city.drawDebugMoon;
+		}
+		else {
+			city.drawMoon = city._drawMoon;
+			delete city._drawMoon;
+		}
 	}
 
 	function windowResized()

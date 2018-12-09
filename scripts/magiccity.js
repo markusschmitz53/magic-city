@@ -417,11 +417,7 @@ return;
 				innerMoonSize = (currentMoonSize - (2 * moonSizeDifference));
 
 			noStroke();
-/*
-			fill('rgba(242, 236, 216, 0.25)');
-			rect(this.moonPosition.x + (this.moonSize / 2), this.moonPosition.y, 200, -50);
-			text(this.moonPosition.x + (this.moonSize / 2), this.moonPosition.y, 'y x + mt²');
-*/
+
 			let moonVertices = 40;
 
 			// draw outer moon circle
@@ -442,6 +438,25 @@ return;
 
 			pop();
 		};
+
+		drawDebugMoon (vol)
+		{
+			this._drawMoon(vol);
+
+			fill('rgba(255, 255, 255, 0.1)');
+			rect(this.moonPosition.x + (this.moonSize / 2), this.moonPosition.y, 250, -90);
+
+			fill('#FFF');
+			textSize(18);
+			let roundedPosX = Math.floor(this.moonPosition.x),
+				roundedPosY = Math.floor(this.moonPosition.y);
+			text('('+roundedPosX+'|'+roundedPosY+')' +
+				 '\n' +
+				 'x = ' + roundedPosX + ' + (' + this.moonTempo + ' · cos( ' + this.moonAngle.toFixed(4) + '))' +
+				 '\n' +
+				 'y = ' + roundedPosX + ' + (' + this.moonTempo + ' · cos( ' + this.moonAngle.toFixed(4) + '))'
+					, this.moonPosition.x + (this.moonSize / 2) + 10, this.moonPosition.y - 60);
+		}
 
 		showDialog (title, message, buttonText, callback) {
 			let dialogButtons = {};
