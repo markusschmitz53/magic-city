@@ -1,0 +1,55 @@
+body {
+	font-size: 12pt;
+}
+
+.ui-widget-content {
+	color: #FFF;
+	background-color: rgba(242, 236, 216, 0.4)
+}
+
+.ui-widget.ui-widget-content {
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ui-dialog-buttonpane.ui-widget-content {
+	background: none;
+	border-color: transparent;
+}
+
+.ui-widget-header {
+	display: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    text-align: center;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	margin-right: 0;
+}
+
+.ui-dialog .ui-button {
+	background-color: transparent;
+	color: #FFF;
+	border-color: rgba(255, 255, 255, 0.05);
+	text-decoration: underline;
+}
+
+.ui-dialog .ui-button:hover {
+
+}
+
+.ui-dialog {
+	text-align: center;
+}
+
+.ui-dialog h1 {
+	font-size: 1em;
+}
+.ui-dialog p,
+.ui-dialog .ui-button {
+	font-size: 0.75em;
+}
