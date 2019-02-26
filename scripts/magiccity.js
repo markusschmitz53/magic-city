@@ -221,7 +221,7 @@ var crewActive,
 						sum += Math.floor(debugFpsArray[i]);
 					}
 
-					console.info("FPS: " + Math.floor(sum/30));
+				//	console.info("FPS: " + Math.floor(sum/30));
 					debugFpsArray = [];
 				}
 			}
