@@ -497,7 +497,7 @@ return;
 							window.location.reload();
 						});
 						break;
-					case 4:
+					default:
 						this.showDialog('That\'s it!', 'You did it one too many times.', 'Oops', function () {
 							localStorage.setItem('drawBlock', 1);
 							window.location.reload();

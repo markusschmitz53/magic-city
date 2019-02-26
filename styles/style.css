@@ -1,9 +1,25 @@
+@font-face {
+	font-family: 'open_sanslight';
+	src:         url('fonts/OpenSans-Light-webfont.woff') format('woff');
+	font-weight: 300;
+	font-style:  normal;
+}
+
+* {
+	font-weight: 300;
+}
+
 body {
+	color: #FFF;
+	font-family: 'open_sanslight', sans-serif;
+	font-weight: 300;
 	font-size: 12pt;
 }
 
 .ui-widget-content {
 	color: #FFF;
+	font-family: 'open_sanslight', sans-serif;
+	font-weight: 300;
 	background-color: rgba(242, 236, 216, 0.4)
 }
 
