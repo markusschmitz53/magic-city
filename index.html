@@ -32,43 +32,6 @@
 <body>
 <main role="main" class="main-content"></main>
 <script type="text/javascript">
-
-	// please note,
-	// that IE11 now returns undefined again for window.chrome
-	// and new Opera 30 outputs true for window.chrome
-	// but needs to check if window.opr is not undefined
-	// and new IE Edge outputs to true now for window.chrome
-	// and if not iOS Chrome check
-	// so use the below updated condition
-	let isChromium = window.chrome;
-	let winNav = window.navigator;
-	let vendorName = winNav.vendor;
-	let isOpera = typeof window.opr !== "undefined";
-	let isIEedge = winNav.userAgent.indexOf("Edge") > -1;
-	let isIOSChrome = winNav.userAgent.match("CriOS");
-	let browserErrorMessage = 'Sorry, you won\t get in today. Try Google Chrome next time.';
-
-	if (isIOSChrome)
-	{
-		alert(browserErrorMessage);
-		throw new Error(browserErrorMessage);
-	}
-	else if (
-			isChromium !== null &&
-			typeof isChromium !== "undefined" &&
-			vendorName === "Google Inc." &&
-			isOpera === false &&
-			isIEedge === false
-	)
-	{
-		// all good, using chrome :)
-	}
-	else
-	{
-		alert(browserErrorMessage);
-		throw new Error(browserErrorMessage);
-	}
-
 	// checked variables below this line
 	var city;
 
@@ -104,7 +67,7 @@
 
 		if (windowWidth < 1200) {
 			let error = 'Come back when your screen is bigger.';
-			city.showDialog('Yours is too small!', error);
+			city.showDialog('cute but no', error);
 			throw new Error(error);
 		}
 
@@ -119,6 +82,14 @@
 		}
 
 		debugFpsArray = [];
+	}
+
+	function mouseClicked() {
+		getAudioContext().resume();
+	}
+
+	function keyPressed() {
+		getAudioContext().resume();
 	}
 
 	function windowResized()

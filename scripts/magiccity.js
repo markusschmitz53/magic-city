@@ -1106,7 +1106,7 @@ return;
 			else
 			{
 				hoodieColor = '#30324A';
-				this.muralTexture = imageTexture2;
+				this.muralTexture = imageTexture1;
 			}
 
 			this.artist = new Artist(hoodieColor, crewPositionX, crewPositionY);
