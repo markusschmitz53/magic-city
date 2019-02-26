@@ -15,29 +15,14 @@
 	<script src="scripts/magiccity.js"></script>
 	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.min.css">
 	<link type="text/css" rel="stylesheet" href="styles/style.css">
-	<style type="text/css">
-
-		body {
-			overflow: hidden;
-			background-color: #13181E;
-		}
-
-		canvas {
-			position: absolute;
-			bottom:    0;
-			left:     0;
-		}
-
-		.loadingclass {
-			margin: 50vh auto 0 auto;
-			width: 20px;
-		}
-	</style>
 </head>
 
 <body>
 <div id="p5_loading" class="loadingclass">
 	<h1>loading</h1>
+</div>
+<div id="info" class="infoclass">
+	<h1>allow microphone access<br> + press any key</h1>
 </div>
 <main role="main" class="main-content"></main>
 <script type="text/javascript">
@@ -53,11 +38,10 @@
 			snowflakes = [],
 			debugFpsSum = 0,
 			debugFpsCount,
-			myfont;
+			animationStarted;
 
 	function preload()
 	{
-		//myfont = loadFont('assets/AvenirNextLTPro-Demi.otf');
   		imageTexture1 = loadImage('images/texture3.png');
   		imageTexture2 = loadImage('images/texture3.png');
   		textureBerlin = loadImage('images/ber_wappen.png');
@@ -67,6 +51,8 @@
 	function setup()
 	{
 		createCanvas(windowWidth, windowHeight, WEBGL);
+
+		animationStarted = false;
 
   		setAttributes('premultipliedAlpha', true);
 
@@ -94,11 +80,17 @@
 	}
 
 	function mouseClicked() {
-		getAudioContext().resume();
+		$('#info').fadeOut('slow', function () {
+			getAudioContext().resume();
+			animationStarted = true;
+		});
 	}
 
 	function keyPressed() {
-		getAudioContext().resume();
+		$('#info').fadeOut('slow', function () {
+			getAudioContext().resume();
+			animationStarted = true;
+		});
 	}
 
 	function windowResized()
@@ -110,7 +102,9 @@
 
 	var draw = function ()
 	{
-		city.draw();
+		if (animationStarted) {
+			city.draw();
+		}
 //		city.drawDebug();
 	};
 </script>

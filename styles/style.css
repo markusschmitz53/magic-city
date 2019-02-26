@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'open_sanslight';
-	src:         url('fonts/OpenSans-Light-webfont.woff') format('woff');
+	src:         url('../fonts/OpenSans-Light-webfont.woff') format('woff');
 	font-weight: 300;
 	font-style:  normal;
 }
@@ -14,6 +14,21 @@ body {
 	font-family: 'open_sanslight', sans-serif;
 	font-weight: 300;
 	font-size: 12pt;
+	overflow:         hidden;
+	background-color: #13181E;
+}
+
+canvas {
+	position: absolute;
+	bottom:   0;
+	left:     0;
+}
+
+.loadingclass,
+.infoclass {
+	width: 400px;
+	margin:     50vh auto 0 auto;
+	text-align: center;
 }
 
 .ui-widget-content {
