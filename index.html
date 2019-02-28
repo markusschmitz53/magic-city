@@ -87,12 +87,18 @@
 	}
 
 	function mouseClicked() {
+		if (animationStarted) {
+			return;
+		}
 		$('#info').fadeOut('slow', function () {
 			startDraw();
 		});
 	}
 
 	function keyPressed() {
+		if (animationStarted) {
+			return;
+		}
 		$('#info').fadeOut('slow', function () {
 			startDraw();
 		});
