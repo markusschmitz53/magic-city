@@ -61,6 +61,7 @@
 		city = new magicCity();
 
 		if (windowWidth < 1200) {
+			$('#info').hide();
 			let error = 'Come back when your screen is bigger.';
 			city.showDialog('cute but no', error);
 			throw new Error(error);
