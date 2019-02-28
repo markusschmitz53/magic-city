@@ -66,30 +66,35 @@
 			throw new Error(error);
 		}
 
+		debugFpsArray = [];
+	}
+
+	function startDraw() {
+		getAudioContext().resume();
+		animationStarted = true;
+
+
 		if (localStorage.getItem('drawBlock') === null) {
 			city.setup();
 		}
 		else {
-			city.showDialog('You destroyed the world', 'You didn\'t listen to me, now see what you did<br><br>=(', '', function () {});
+			city.showDialog('You destroyed the world', 'You didn\'t listen to me, now see what you did<br><br>=(', '', function () {
+			});
 			city.draw = function () {
 
 			};
 		}
-
-		debugFpsArray = [];
 	}
 
 	function mouseClicked() {
 		$('#info').fadeOut('slow', function () {
-			getAudioContext().resume();
-			animationStarted = true;
+			startDraw();
 		});
 	}
 
 	function keyPressed() {
 		$('#info').fadeOut('slow', function () {
-			getAudioContext().resume();
-			animationStarted = true;
+			startDraw();
 		});
 	}
 
