@@ -64,6 +64,7 @@
 			$('#info').hide();
 			let error = 'Come back when your screen is bigger.';
 			city.showDialog('cute but no', error);
+			animationStarted = true;
 			throw new Error(error);
 		}
 
