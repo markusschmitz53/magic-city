@@ -861,11 +861,16 @@ return;
 
 			// real baseplate is about 16% (32m) of the ~200m high shaft
 			this.baseplateWidth = Math.floor(this.lowerPartheight * 0.16);
+			
+			this.baseplateWidth *= (windowWidth/windowHeight) / 2;
+
 			this.lowerPartWidthDifference = Math.floor(this.baseplateWidth / 4);
 
 			if (isNaN(this.baseplateWidth) || isNaN(this.lowerPartheight)) {
 				throw new Error('Width or height calculation failed!');
 			}
+
+
 
 			this.initialPositionX1 = _initialPositionX; // bottom left
 			this.initialPositionY1 = (height / 2);

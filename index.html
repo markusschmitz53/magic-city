@@ -50,22 +50,7 @@
 
 	function setup()
 	{
-		let canvasWidth = windowWidth,
-		canvasHeight = windowHeight;
-
-	/*	if (canvasWidth > 1600) {
-			let ratio = (1600 / windowWidth);   // get ratio for scaling image
-			canvasHeight = windowHeight * ratio;    // Reset height to match scaled image
-			canvasWidth = windowWidth * ratio;    // Reset width to match scaled image
-		}
-
-		if (windowHeight > 757) {
-			let ratio = (757 / windowHeight);   // get ratio for scaling image
-			canvasHeight = windowHeight * ratio;    // Reset height to match scaled image
-			canvasWidth = windowWidth * ratio;    // Reset width to match scaled image
-		}*/
-
-		createCanvas(canvasWidth, canvasHeight, WEBGL);
+		createCanvas(windowWidth, windowHeight, WEBGL);
 
 		pixelDensity(1);
 
@@ -77,7 +62,7 @@
 
 		city = new magicCity();
 
-		if (windowWidth < 1200) {
+		if (windowWidth < 1200 || windowHeight < 600) {
 			$('#info').hide();
 			let error = 'Come back when your screen is bigger.';
 			city.showDialog('cute but no', error);
