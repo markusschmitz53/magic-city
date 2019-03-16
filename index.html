@@ -50,7 +50,24 @@
 
 	function setup()
 	{
-		createCanvas(windowWidth, windowHeight, WEBGL);
+		let canvasWidth = windowWidth,
+		canvasHeight = windowHeight;
+
+		if (canvasWidth > 1600) {
+			let ratio = 1600 / windowWidth;   // get ratio for scaling image
+			canvasHeight = windowHeight * ratio;    // Reset height to match scaled image
+			canvasWidth = windowWidth * ratio;    // Reset width to match scaled image
+		}
+
+		if (windowHeight > 757) {
+			let ratio = 757 / windowHeight;   // get ratio for scaling image
+			canvasHeight = windowHeight * ratio;    // Reset height to match scaled image
+			canvasWidth = windowWidth * ratio;    // Reset width to match scaled image
+		}
+
+		createCanvas(canvasWidth, canvasHeight, WEBGL);
+
+		pixelDensity(1);
 
 		animationStarted = false;
 
